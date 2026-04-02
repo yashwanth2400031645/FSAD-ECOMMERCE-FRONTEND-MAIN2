@@ -18,6 +18,7 @@ public class SecurityConfig {
             .cors(cors -> {}) // ✅ enable CORS
             .csrf(csrf -> csrf.disable()) // disable CSRF for API
             .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/health").permitAll() // allow health check without authentication
                 .anyRequest().permitAll() // allow all requests
             );
 
